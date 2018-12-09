@@ -5,9 +5,14 @@ import Title from "./components/Title";
 import NavBar from "./components/NavBar";
 import friends from "./friends.json";
 
-function loadFriends(){
-  // TODO: figure out how to load friends in a different order every time the user clicks a friend.
+function loadFriends(array){
+  // load friends in a different order every time the user clicks a friend.
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
 
+  return array;
 }
 
 class App extends Component {
