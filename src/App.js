@@ -2,12 +2,21 @@ import React, { Component } from "react";
 import FriendCard from "./components/FriendCard";
 import Wrapper from "./components/Wrapper";
 import Title from "./components/Title";
+import NavBar from "./components/NavBar";
 import friends from "./friends.json";
+
+function loadFriends(){
+  // TODO: figure out how to load friends in a different order every time the user clicks a friend.
+
+}
 
 class App extends Component {
   // Setting this.state.friends to the friends json array
   state = {
-    friends
+    friends,
+    currentScore: 0,
+    topScore: 0,
+    result: "",
   };
 
   removeFriend = id => {
@@ -21,10 +30,17 @@ class App extends Component {
   render() {
     return (
       <Wrapper>
-        <Title>Friends List</Title>
+        <NavBar 
+        title="Game of Thrones Clicky Game"
+        currentScore={this.state.currentScore}
+        topScore={this.state.topScore}
+        result={this.state.result}>
+        </NavBar>
+        <Title>Click on an image to earn points, but don't click on any more than once!</Title>
+
         {this.state.friends.map(friend => (
           <FriendCard
-            removeFriend={this.removeFriend}
+            loadFriends={this.loadFriends}
             id={friend.id}
             key={friend.id}
             name={friend.name}
