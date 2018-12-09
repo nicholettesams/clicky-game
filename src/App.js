@@ -31,7 +31,7 @@ class App extends Component {
     console.log(this.state.currentScore)
 
     // If current score is greater than top score, set the top score to the current score
-    if (this.state.currentScore >= this.state.topScore) {
+    if (this.state.currentScore > this.state.topScore) {
       this.setState({topScore: this.state.currentScore})
     }
     console.log(this.state.topScore)
