@@ -19,11 +19,22 @@ class App extends Component {
     result: "",
   };
 
-  removeFriend = id => {
-    // Filter this.state.friends for friends with an id not equal to the id being removed
-    const friends = this.state.friends.filter(friend => friend.id !== id);
-    // Set this.state.friends equal to the new friends array
-    this.setState({ friends });
+  handleScore = id => {
+    // TODO: Increase the score by 1 
+    // If current score is greater than top score, set the top score to the current score
+
+  }
+
+  handleClick = id => {
+    // TODO: When click, need to show result (new click or re-click), 
+    
+    // If result is good (new click)
+        // increase the score, and reload the cards in a different order   
+    // IF result is bad (re-click)
+        // clear scores and restart the game 
+
+    // const friends = this.state.friends.filter(friend => friend.id !== id);
+    // this.setState({ friends });
   };
 
   // Map over this.state.friends and render a FriendCard component for each friend object
@@ -38,6 +49,8 @@ class App extends Component {
         </NavBar>
         <Title>Click on an image to earn points, but don't click on any more than once!</Title>
 
+
+        {/* TODO: figure out how to get into 3 rows and 4 columns */}
         {this.state.friends.map(friend => (
           <FriendCard
             loadFriends={this.loadFriends}
