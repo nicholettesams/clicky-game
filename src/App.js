@@ -20,21 +20,38 @@ class App extends Component {
   };
 
   handleScore = id => {
-    // TODO: Increase the score by 1 
+    // Increase the current score by 1 
+    this.setState({
+      currentScore: this.state.currentScore++
+    })
+
     // If current score is greater than top score, set the top score to the current score
+    if (this.state.currentScore >= this.state.topScore) {
+      this.setState({topScore: this.state.currentScore})
+    }
 
   }
 
   handleClick = id => {
-    // TODO: When click, need to show result (new click or re-click), 
-    
+    // TODO:
     // If result is good (new click)
-        // increase the score, and reload the cards in a different order   
+        // set state as clicked
+        // ??
+        // show result
+        this.setState({ result: "You guessed correctly!" });
+        // increase the score
+        this.handleScore()
+        // reload the cards in a different order 
+        loadFriends()  
     // IF result is bad (re-click)
+        // show result
+        this.setState({ result: "You guessed incorrectly!" });
         // clear scores and restart the game 
-
-    // const friends = this.state.friends.filter(friend => friend.id !== id);
-    // this.setState({ friends });
+        this.setState({
+          currentScore: 0,
+          result: ""
+        })
+        loadFriends()
   };
 
   // Map over this.state.friends and render a FriendCard component for each friend object
@@ -54,6 +71,7 @@ class App extends Component {
         {this.state.friends.map(friend => (
           <FriendCard
             loadFriends={this.loadFriends}
+            handleClick={this.handleClick}
             id={friend.id}
             key={friend.id}
             name={friend.name}
