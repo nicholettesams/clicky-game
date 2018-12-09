@@ -5,8 +5,7 @@ import Title from "./components/Title";
 import NavBar from "./components/NavBar";
 import friends from "./friends.json";
 
-function loadFriends(array){
-  // load friends in a different order every time the user clicks a friend.
+function randomizeFriends(array){
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
@@ -27,14 +26,22 @@ class App extends Component {
   handleScore = id => {
     // Increase the current score by 1 
     this.setState({
-      currentScore: this.state.currentScore++
+      currentScore: this.state.currentScore + 1
     })
+    console.log(this.state.currentScore)
 
     // If current score is greater than top score, set the top score to the current score
     if (this.state.currentScore >= this.state.topScore) {
       this.setState({topScore: this.state.currentScore})
     }
+    console.log(this.state.topScore)
 
+  }
+
+  handleFriends = () => {
+    // load friends in a different order every time the user clicks a friend.
+    let randomFriends = randomizeFriends(friends)
+    this.setState({ friends: randomFriends})
   }
 
   handleClick = id => {
@@ -47,16 +54,16 @@ class App extends Component {
         // increase the score
         this.handleScore()
         // reload the cards in a different order 
-        loadFriends()  
+        this.handleFriends() 
     // IF result is bad (re-click)
         // show result
-        this.setState({ result: "You guessed incorrectly!" });
+        //this.setState({ result: "You guessed incorrectly!" });
         // clear scores and restart the game 
-        this.setState({
-          currentScore: 0,
-          result: ""
-        })
-        loadFriends()
+        // this.setState({
+        //   currentScore: 0,
+        //   result: ""
+        // })
+        // this.handleFriends()
   };
 
   // Map over this.state.friends and render a FriendCard component for each friend object
@@ -77,6 +84,7 @@ class App extends Component {
           <FriendCard
             loadFriends={this.loadFriends}
             handleClick={this.handleClick}
+            handleFriends={this.handleFriends}
             id={friend.id}
             key={friend.id}
             name={friend.name}
