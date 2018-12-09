@@ -10,7 +10,7 @@ const NavBar = props => (
 
       <li id="result">{props.result}</li>
 
-      <li id="current-score">Current Score: {props.score}</li>
+      <li id="current-score">Current Score: {props.currentScore}</li>
 
       <li id="top-score">Top Score: {props.topScore}</li>
     </ul>
