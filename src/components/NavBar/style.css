@@ -4,7 +4,7 @@ nav {
     color: #fff;
     width: 100%;
     font-size: 1rem;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     height: auto;
   }
   
@@ -19,7 +19,7 @@ nav {
   
   li {
     display: inline-block;
-    padding: 18px 0;
+    padding: 12px 0;
     width: 25%;
   }
   

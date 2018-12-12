@@ -97,8 +97,6 @@ class App extends Component {
         </NavBar>
         <Title>Click on an image to earn points, but don't click on any more than once!</Title>
 
-
-        {/* TODO: figure out how to get into 3 rows and 4 columns */}
         {this.state.friends.map(friend => (
           <FriendCard
             loadFriends={this.loadFriends}
