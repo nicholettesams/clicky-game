@@ -58,7 +58,7 @@ class App extends Component {
         this.handleScore()
 
         let result = ""
-        if (currentClicked.length = 12) {
+        if (currentClicked.length === 12) {
             result = "You won the iron throne!"
         } else {
             result = "You guessed correctly!"
