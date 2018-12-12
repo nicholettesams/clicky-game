@@ -26,17 +26,17 @@ class App extends Component {
 
   handleScore = id => {
     // Increase the current score by 1 
+    // Had to use variable because the state was not getting updated immediately
+    const newScore = this.state.currentScore + 1
+
     this.setState({
-      currentScore: this.state.currentScore + 1
+      currentScore: newScore
     })
-    console.log(this.state.currentScore)
-
-    // If current score is greater than top score, set the top score to the current score
-    if (this.state.currentScore > this.state.topScore) {
-      this.setState({topScore: this.state.currentScore})
+  
+    // If current score is greater than top score, set the top score to the newScore
+    if (newScore > this.state.topScore) {
+      this.setState({topScore: newScore})
     }
-    console.log(this.state.topScore)
-
   }
 
   handleFriends = () => {
@@ -83,6 +83,8 @@ class App extends Component {
         this.handleFriends()
     }
   };
+
+
 
   // Map over this.state.friends and render a FriendCard component for each friend object
   render() {
