@@ -73,14 +73,13 @@ class App extends Component {
         this.handleFriends() 
 
     } else {
-    // IF result is bad (re-click)
-        // clear scores and restart the game 
+    // If result is bad (re-click)
+        // clear current score and restart the game 
         this.setState({
           currentScore: 0,
           result: "You guessed incorrectly!",
           clicked: []
         })
-        this.handleFriends()
     }
   };
 
