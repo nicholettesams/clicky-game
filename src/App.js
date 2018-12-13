@@ -110,7 +110,6 @@ class App extends Component {
           />
         ))}
         
-      <Route exact path={`/`} render={ (routerProps) => < Home routerProps={routerProps} setUpGame={this.setUpGame} />} />
       </Wrapper>
     );
   }
