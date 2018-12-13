@@ -109,6 +109,8 @@ class App extends Component {
             clicked={friend.clicked}
           />
         ))}
+        
+      <Route exact path={`/`} render={ (routerProps) => < Home routerProps={routerProps} setUpGame={this.setUpGame} />} />
       </Wrapper>
     );
   }
